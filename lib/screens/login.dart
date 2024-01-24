@@ -16,6 +16,8 @@ class LoginScreen extends StatelessWidget {
     // Replace with your actual allowed credentials
     final allowedEmail = 'dept.camh@medicalemr.com';
     final allowedPassword = 'childadol';
+    print('Email: $email');
+    print('Password: $password');
 
     if (email == allowedEmail && password == allowedPassword) {
       // Successful login, you can navigate to another screen or perform an action
@@ -25,14 +27,14 @@ class LoginScreen extends StatelessWidget {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Login Failed'),
-          content: Text('Invalid email or password. Please try again.'),
+          title: const Text('Login Failed'),
+          content: const Text('Invalid email or password. Please try again.'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         ),
@@ -71,6 +73,7 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   width: width * 0.5,
                   child: TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       hintText: 'Enter your email',
                       hintStyle: TextStyle(color: Colors.grey.shade400),
@@ -85,6 +88,7 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   width: width * 0.5,
                   child: TextField(
+                    controller: passwordController,
                     decoration: InputDecoration(
                       hintText: 'Enter your password',
                       hintStyle: TextStyle(color: Colors.grey.shade400),
