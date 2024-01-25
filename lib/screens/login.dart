@@ -1,4 +1,4 @@
-import 'package:devhawks/credential/admin.dart';
+import 'package:devhawks/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -20,7 +20,11 @@ class LoginScreen extends StatelessWidget {
     print('Password: $password');
 
     if (email == allowedEmail && password == allowedPassword) {
-      // Successful login, you can navigate to another screen or perform an action
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
+        ),
+      );
       print('Login successful');
     } else {
       // Invalid credentials, show an error message
@@ -57,9 +61,7 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                      left: width * 0.25,
-                      top: height * 0.2,
-                      right: width * 0.25),
+                      left: width * 0.2, top: height * 0.2, right: width * 0.2),
                   child: const Text(
                     'Login to your account',
                     style: TextStyle(
@@ -71,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: height * 0.09),
                 SizedBox(
-                  width: width * 0.5,
+                  width: width * 0.4,
                   child: TextField(
                     controller: emailController,
                     decoration: InputDecoration(
@@ -79,15 +81,17 @@ class LoginScreen extends StatelessWidget {
                       hintStyle: TextStyle(color: Colors.grey.shade400),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade400, width: 1.0),
                       ),
                     ),
                   ),
                 ),
                 SizedBox(height: height * 0.05),
                 SizedBox(
-                  width: width * 0.5,
+                  width: width * 0.4,
                   child: TextField(
+                    obscureText: true,
                     controller: passwordController,
                     decoration: InputDecoration(
                       hintText: 'Enter your password',
